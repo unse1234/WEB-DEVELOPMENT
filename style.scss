@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+}
+
+@mixin section($background-image) {
+    flex-grow: 1;
+    background-color: #d8f361;
+    background-image: url($background-image);
+    background-size: cover;
+    background-position: center;
+    transition: all 0.5s ease;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+ gap: 20px;
+ background-color: black;
+    section:nth-child(1) { @include section("./thor.jpg");}
+    section:nth-child(2) { @include section("./ironman.jpg");}
+    section:nth-child(3) { @include section("./captainamerica.jpg");}
+    section:nth-child(4) {@include section("./loki.jpg");}
+    section:nth-child(5) {@include section("./drdoom.jpg");}
+    section:hover{flex-grow: 2;}
+}
