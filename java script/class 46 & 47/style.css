@@ -1,0 +1,333 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: black;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* ── Top Bar ── */
+.topbar {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+}
+.topbar span {
+  font-size: 24px;
+  font-weight: 700;
+  color: transparent;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+/* ── Stories Row ── */
+.stories-row {
+  display: flex;
+  overflow-x: auto;
+  width: 100%;
+  max-width: 600px;
+  gap: 15px;
+  margin-top: 20px;
+  scrollbar-width: none;
+}
+.stories-row::-webkit-scrollbar { display: none; }
+
+/* ── Story Thumb ── */
+.story {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+  user-select: none;
+}
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  position: relative;
+  transition: transform 0.15s;
+}
+.avatar:hover { transform: scale(1.06); }
+.avatar.seen  { background: #444; }
+.avatar img {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background-color: black;
+  position: absolute;
+  object-fit: cover;
+  top: 5%;
+  left: 5%;
+  border: 2px solid black;
+}
+.username {
+  font-size: 11px;
+  color: white;
+  text-align: center;
+  max-width: 72px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* ════════════════════════════
+   STORY VIEWER
+════════════════════════════ */
+.viewer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.viewer.active { display: flex; }
+
+/* ── Progress Bars ── */
+.progress-bars {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  gap: 4px;
+  z-index: 10;
+}
+.bar {
+  flex: 1;
+  height: 2.5px;
+  background: rgba(255,255,255,0.35);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  width: 0%;
+  background: #fff;
+  border-radius: 2px;
+  transition: none;
+}
+.bar.done .bar-fill { width: 100%; }
+
+/* ── Header ── */
+.viewer-header {
+  position: absolute;
+  top: 28px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+}
+.viewer-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+.viewer-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+.viewer-time {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+}
+.viewer-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+}
+
+/* ── Story Image ── */
+.viewer-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* ── Tap Zones ── */
+.tap-left, .tap-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 35%;
+  z-index: 5;
+  cursor: pointer;
+}
+.tap-left  { left: 0; }
+.tap-right { right: 0; }
+
+/* ── Pause Badge ── */
+.pause-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  z-index: 9;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+}
+.pause-badge.show { opacity: 1; }
+
+/* ── Footer ── */
+.viewer-footer {
+  position: absolute;
+  bottom: 20px;
+  left: 16px;
+  right: 16px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.reply-input {
+  flex: 1;
+  background: rgba(255,255,255,0.12);
+  border: 1.5px solid rgba(255,255,255,0.35);
+  border-radius: 24px;
+  padding: 10px 18px;
+  color: white;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+}
+.reply-input::placeholder { color: rgba(255,255,255,0.5); }
+.reply-input:focus { border-color: rgba(255,255,255,0.8); }
+
+.heart-btn {
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.heart-btn:active { transform: scale(1.35); }
+
+
+/* Add Story special avatar */
+.add-story-ring {
+  background: none !important;
+  border: 2px dashed #555 !important;
+}
+
+.add-story-ring img {
+  filter: brightness(0.45);
+}
+
+.plus-icon {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 22px;
+  height: 22px;
+  background: #0095f6;
+  border: 2px solid black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+  z-index: 2;
+}
+
+/* Add story modal */
+.add-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 600px;
+  height: 80vh;
+  max-height: 700px;
+  background: #1a1a1a;
+  z-index: 999;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  box-shadow: 0 0 0 100vw rgba(0,0,0,0.75);
+}
+.add-modal.active { display: flex; }
+
+.add-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.add-modal h2 {
+  font-size: 18px;
+  color: white;
+  font-weight: 600;
+}
+
+.add-modal p {
+  font-size: 13px;
+  color: #888;
+  text-align: center;
+  padding: 0 30px;
+}
+
+.upload-btn {
+  background: #0095f6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 32px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.upload-btn:hover { background: #0081d6; }
+
+.upload-icon {
+  font-size: 20px;
+}

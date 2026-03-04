@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stories</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <span>Stories</span>
+  </div>
+
+  <div class="stories-row" id="storiesRow"></div>
+
+  <!-- Hidden file input -->
+  <input type="file" id="fileInput" accept="image/*" style="display:none" />
+
+  <!-- Story Viewer -->
+  <div class="viewer" id="viewer">
+    <div class="progress-bars" id="progressBars"></div>
+    <div class="viewer-header">
+      <img class="viewer-avatar" id="viewerAvatar" src="" alt="">
+      <span class="viewer-name" id="viewerName"></span>
+      <span class="viewer-time">just now</span>
+      <button class="viewer-close" id="viewerClose">✕</button>
+    </div>
+    <img class="viewer-img" id="viewerImg" src="" alt="">
+    <div class="tap-left"  id="tapLeft"></div>
+    <div class="tap-right" id="tapRight"></div>
+    <div class="pause-badge" id="pauseBadge">⏸</div>
+    <div class="viewer-footer">
+      <input class="reply-input" placeholder="Reply..." />
+      <button class="heart-btn" id="heartBtn">🤍</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
