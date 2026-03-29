@@ -63,26 +63,52 @@
 // process(() => console.log("Callback executed"));
 
 // console.log("End");
-function getuser(email,pass,cb)
-{
-    console.log(`email and pass recieved ${email} and ${pass}`);
-    console.log('fetching details');
-    setTimeout(() => {
-        cb({id:1,name:"ali"});
-    }, 2000);
+// function getuser(email,pass,cb)
+// {
+//     console.log(`email and pass recieved ${email} and ${pass}`);
+//     console.log('fetching details');
+//     setTimeout(() => {
+//         cb({id:1,name:"ali"});
+//     }, 2000);
 
-}
+// }
 
-function getuserprofile(id,cb){
-    console.log(`id recieved ${id}`);
-    console.log('fetching profile');    
-    setTimeout(() => {
-        cb({age:22,city:"karachi"});
-    }, 1000);
+// function getuserprofile(id,cb){
+//     console.log(`id recieved ${id}`);
+//     console.log('fetching profile');    
+//     setTimeout(() => {
+//         cb({age:22,city:"karachi"});
+//     }, 1000);
 
-}
-getuser("123@gmail.com","12345678",function(details){
-    getuserprofile(details.id,function(profile){
-        console.log(profile);
-    });
-});
+// }
+// getuser("123@gmail.com","12345678",function(details){
+//     getuserprofile(details.id,function(profile){
+//         console.log(profile);
+//     });
+// });
+
+// let prm= new Promise((resolve,reject)=>{
+//     setTimeout(() => {
+//           resolve("data recieved");
+//     }, 3000);
+// });
+
+
+// prm.then((data)=>{
+//     console.log(data);
+// }).catch((err)=>{
+//     console.log(err);
+// });
+
+
+// async function getData() {
+//   try {
+//     const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+//     const data = await response.json();
+//     console.log(data);
+//   } catch (error) {
+//     console.error('Error:', error);
+//   }
+// }
+
+// getData();
