@@ -1,0 +1,17 @@
+nav{
+   width: 100%;
+   padding: 0 40px;
+    background-color: rgb(255, 255, 255);
+    display: flex ;
+    justify-content: space-between;
+    align-items: center;
+    font-family: inter, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+     .logo{
+        h5{
+             font-weight: 800;
+        }
+     }
+     img{
+        height: 40px;
+     }
+}

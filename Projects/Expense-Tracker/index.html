@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spendly — Expense Tracker</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                Expense Tracker
+            </div>
+            <h1>Spend <em>wisely,</em><br />live freely.</h1>
+            <p>Log your expenses and stay on top of your finances — one entry at a time.</p>
+        </div>
+
+        <div class="card">
+            <div class="section-label">New Expense</div>
+
+            <form id="expense-form" novalidate>
+                <div class="form-grid">
+
+                    <div class="form-group full" id="group-description">
+                        <label for="description">Description</label>
+                        <input type="text" id="description" placeholder="e.g. Morning coffee" maxlength="60"
+                            autocomplete="off" />
+                        <span class="error-msg">Please enter a description.</span>
+                    </div>
+
+                    <div class="form-group" id="group-amount">
+                        <label for="amount">Amount</label>
+                        <div class="amount-wrap">
+                            <span class="prefix">$</span>
+                            <input type="number" id="amount" placeholder="0.00" min="0.01" step="0.01" />
+                        </div>
+                        <span class="error-msg">Enter a valid amount.</span>
+                    </div>
+
+                    <div class="form-group" id="group-date">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" />
+                        <span class="error-msg">Pick a date.</span>
+                    </div>
+
+                    <div class="form-group full" id="group-category">
+                        <label for="category">Category</label>
+                        <div class="select-wrap">
+                            <select id="category">
+                                <option value="">— Select category —</option>
+                                <option value="Food">🍔 Food & Dining</option>
+                                <option value="Transport">🚗 Transport</option>
+                                <option value="Shopping">🛍️ Shopping</option>
+                                <option value="Bills">💡 Bills & Utilities</option>
+                                <option value="Health">💊 Health</option>
+                                <option value="Entertainment">🎬 Entertainment</option>
+                                <option value="Other">📦 Other</option>
+                            </select>
+                        </div>
+                        <span class="error-msg">Please choose a category.</span>
+                    </div>
+
+                </div>
+
+                <div class="divider"></div>
+
+                <button type="submit" class="btn-submit">
+                    <span class="btn-icon">+</span>
+                    Add Expense
+                </button>
+            </form>
+        </div>
+             
+        <!-- Phase 3 — Summary Section -->
+<div id="summary-section">
+
+  <!-- Total Card -->
+  <div class="summary-total">
+    <span class="summary-label">Total Spent</span>
+    <span class="summary-amount" id="total-amount">$0.00</span>
+  </div>
+
+  <!-- Category Breakdown -->
+  <div class="summary-categories" id="category-breakdown">
+    <!-- JS will inject category rows here -->
+    <!-- Each row will look like this: -->
+    <!-- 
+    <div class="category-row">
+      <span class="category-name">🍔 Food</span>
+      <span class="category-total">$4.50</span>
+    </div>
+    -->
+  </div>
+
+</div>
+
+
+       <!-- Expense List Section -->
+<div id="expense-list-section">
+
+  <!-- Header Row (labels) -->
+  <div class="list-header">
+    <span class="col-id">ID</span>
+    <span class="col-category">Category</span>
+    <span class="col-description">Description</span>
+    <span class="col-amount">Amount</span>
+     <span class="col-date">Date</span>
+    <span class="col-action"></span>
+   
+  </div>
+
+  <!-- Expense Rows — JS will generate these -->
+  <div id="expense-list">
+
+    <!-- Example row (you will remove this later, JS will generate it) -->
+  </div>
+
+  <!-- Empty state -->
+  <div id="empty-state" class="hidden">
+    <span>☕</span> No expenses yet. Add one above!
+  </div>
+
+</div>
+</div>
+<div class="toast" id="toast">☕ Expense logged!</div>
+ <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+@font-face {
+  font-family: "inter";
+  src: url("assets/fonts/Inter-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "cav";
+  src: url("assets/fonts/Caveat-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "ins";
+  src: url("assets/fonts/InstrumentSerif-Regular.ttf") format("truetype");
+}
+nav {
+  width: 100%;
+  padding: 0 40px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: inter, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+nav .logo h5 {
+  font-weight: 800;
+}
+nav img {
+  height: 40px;
+}
+
+section {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: 15% 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "sidebar  top" "sidebar  bottom";
+}
+section .sidebar {
+  grid-area: sidebar;
+  padding: 50PX 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+section .sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 40px;
+}
+section .sidebar__nav a {
+  font-weight: 700;
+  font-size: 24px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #000;
+  text-decoration: none;
+}
+section .sidebar__socials {
+  display: flex;
+  font-size: 14px;
+}
+section .sidebar__socials svg {
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+}
+section .sidebar .top {
+  grid-area: top;
+}
+section .sidebar .top .hero {
+  display: flex;
+  align-items: center;
+  padding: 100px 10%;
+  min-height: 60vh;
+}
+section .sidebar .top .hero__container {
+  max-width: 900px;
+}
+section .sidebar .top .hero__title {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.5rem;
+}
+section .sidebar .top .hero__title .title-serif {
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  line-height: 1;
+  color: #000;
+}
+section .sidebar .top .hero__title .title-script {
+  font-family: "Caveat", cursive;
+  font-size: clamp(4rem, 12vw, 9rem);
+  margin-left: 20%;
+  margin-top: -1.5rem;
+  font-weight: 400;
+  color: #000;
+}
+section .sidebar .top .hero__copy {
+  max-width: 440px;
+  margin-left: 25%;
+}
+section .sidebar .top .hero__copy p {
+  font-family: "Inter", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+}
+section .sidebar .top .hero__copy p strong {
+  color: #000;
+  font-weight: 700;
+}
+section .sidebar .bottom {
+  grid-area: bottom;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: "Inter", sans-serif;
+  background-color: #ffffff;
+  color: #1a1a1a;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+}/*# sourceMappingURL=style.css.map */

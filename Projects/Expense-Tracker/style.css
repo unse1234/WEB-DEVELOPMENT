@@ -1,0 +1,590 @@
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── CSS Variables ── */
+:root {
+  --bg:       #F2E8DC;
+  --surface:  #EDE0CE;
+  --surface2: #E4D4BF;
+  --border:   #D4BFA3;
+  --mocha:    #6B4C3B;
+  --mocha-lt: #8C6656;
+  --latte:    #C9A882;
+  --latte-lt: #E2C9A8;
+  --text:     #3A2215;
+  --muted:    #9A7A68;
+  --white:    #FBF6F0;
+}
+
+/* ── Body ── */
+body {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 100% 0%, rgba(107,76,59,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 0% 100%, rgba(201,168,130,0.12) 0%, transparent 55%);
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 48px 20px 100px;
+}
+
+/* ── Layout ── */
+.container {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* ── Header ── */
+.header {
+  margin-bottom: 40px;
+  animation: slideDown 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mocha-lt);
+  margin-bottom: 12px;
+}
+
+.eyebrow-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--latte);
+  border-radius: 50%;
+}
+
+.header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 7vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--mocha);
+  letter-spacing: -0.5px;
+}
+
+.header h1 em {
+  font-style: italic;
+  color: var(--latte);
+}
+
+.header p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* ── Card ── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 36px 32px;
+  box-shadow:
+    0 2px 0px var(--border),
+    0 12px 40px rgba(107, 76, 59, 0.1);
+  animation: slideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+  position: relative;
+  overflow: hidden;
+}
+
+/* decorative top gradient bar */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--mocha), var(--latte), var(--mocha-lt));
+}
+
+.section-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+/* ── Form Grid ── */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* ── Form Group ── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group.full {
+  grid-column: 1 / -1;
+}
+
+/* ── Labels ── */
+label {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--mocha);
+  text-transform: uppercase;
+}
+
+/* ── Inputs & Select ── */
+input,
+select {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 14.5px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400;
+  color: var(--text);
+  outline: none;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+input::placeholder {
+  color: var(--border);
+}
+
+input:focus,
+select:focus {
+  border-color: var(--mocha);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(107, 76, 59, 0.08);
+}
+
+/* hide number spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  display: none;
+}
+
+/* ── Amount Field ── */
+.amount-wrap {
+  position: relative;
+}
+
+.amount-wrap .prefix {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--latte);
+  font-weight: 600;
+  font-size: 15px;
+  pointer-events: none;
+}
+
+.amount-wrap input {
+  padding-left: 28px;
+}
+
+/* ── Select Field ── */
+.select-wrap {
+  position: relative;
+}
+
+.select-wrap::after {
+  content: '▾';
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 13px;
+  pointer-events: none;
+}
+
+select option {
+  background: #f5ede3;
+}
+
+/* ── Validation Error State ── */
+.form-group.error input,
+.form-group.error select {
+  border-color: #C0724A;
+  box-shadow: 0 0 0 4px rgba(63, 21, 0, 0.1);
+}
+
+.error-msg {
+  display: none;
+  font-size: 11px;
+  color: #C0724A;
+  font-weight: 500;
+}
+
+.form-group.error .error-msg {
+  display: block;
+}
+
+/* ── Divider ── */
+.divider {
+  height: 1px;
+  background: var(--surface2);
+  margin: 26px 0;
+}
+
+/* ── Submit Button ── */
+.btn-submit {
+  width: 100%;
+  padding: 15px;
+  background: var(--mocha);
+  color: var(--latte-lt);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 0px #4A3428, 0 8px 24px rgba(107, 76, 59, 0.25);
+}
+
+.btn-submit:hover {
+  background: var(--mocha-lt);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 0px #4A3428, 0 12px 32px rgba(107, 76, 59, 0.3);
+}
+
+.btn-submit:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0px #4A3428, 0 4px 12px rgba(107, 76, 59, 0.2);
+}
+
+.btn-icon {
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* ── Toast Notification ── */
+.toast {
+  position: fixed;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--mocha);
+  color: var(--latte-lt);
+  border-radius: 50px;
+  padding: 12px 22px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 32px rgba(107, 76, 59, 0.35);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s;
+  opacity: 0;
+  z-index: 999;
+  white-space: nowrap;
+}
+
+
+
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ══════════════════════════════════════
+   PHASE 2 — Expense List (single row)
+══════════════════════════════════════ */
+
+.hidden { display: none; }
+
+/* ── Section Wrapper ── */
+#expense-list-section {
+  margin-top: 32px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 0px var(--border), 0 8px 24px rgba(107, 76, 59, 0.08);
+}
+
+/* ── Shared Row Layout ── */
+/* Both header and expense rows use the same grid columns */
+.list-header,
+.expense-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 100px 2fr 3fr 40px;
+  align-items: center;
+  gap: 20px;
+  padding: 13px 20px;
+}
+
+/* ── Header Row ── */
+.list-header {
+  background: var(--surface);
+  border-bottom: 1.5px solid var(--border);
+}
+
+.list-header span {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── Expense Row ── */
+.expense-row {
+  border-bottom: 1px solid var(--surface2);
+  transition: background 0.15s;
+}
+
+.expense-row:last-child {
+  border-bottom: none;
+}
+
+.expense-row:hover {
+  background: var(--surface);
+}
+
+/* ── Columns ── */
+.col-id {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.col-category {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--mocha-lt);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3px 10px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* category pill inside a data row should not have bg (already on row) */
+.expense-row:hover .col-category {
+  background: var(--surface2);
+}
+
+.col-description {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.col-amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--mocha);
+  text-align: right;
+}
+col-date {
+  font-size: 11px;
+  color: var(--muted);
+  text-align: right;
+}
+/* ── Delete Button ── */
+.btn-delete {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 12px;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  justify-self: center;
+}
+
+.btn-delete:hover {
+  background: #fdecea;
+  border-color: #e07070;
+  color: #c0524a;
+}
+
+/* ── Empty State ── */
+#empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* ══════════════════════════════════════
+   PHASE 3 — Summary Section
+══════════════════════════════════════ */
+
+/* ── Wrapper ── */
+#summary-section {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 14px;
+  animation: slideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+/* ── Total Card ── */
+.summary-total {
+  background: var(--mocha);
+  border-radius: 20px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  box-shadow: 0 4px 0px #4A3428, 0 8px 24px rgba(107, 76, 59, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* decorative circle in background */
+.summary-total::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+}
+
+.summary-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--latte);
+}
+
+.summary-amount {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 5vw, 34px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+}
+
+/* ── Category Breakdown Card ── */
+.summary-categories {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 2px 0px var(--border), 0 8px 20px rgba(107, 76, 59, 0.07);
+}
+
+/* ── Single Category Row ── */
+.category-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.category-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.category-total {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--mocha);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2px 10px;
+}
+
+/* divider between category rows */
+.category-row + .category-row {
+  border-top: 1px solid var(--surface2);
+  padding-top: 10px;
+}
+
+/* empty message when no expenses yet */
+.category-empty {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 300;
+  text-align: center;
+  padding: 10px 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 440px) {
+  #summary-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Animations ── */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 400px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .form-group.full { grid-column: 1; }
+  .card { padding: 28px 20px; }
+}

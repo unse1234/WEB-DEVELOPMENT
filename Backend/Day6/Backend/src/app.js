@@ -2,8 +2,11 @@ const NoteModel = require("./models/notes.model");
 const cors = require("cors");
 const express = require("express");
 const App = express();
+const path = require("path");
 App.use(cors());
 App.use(express.json());
+
+App.use(express.static("./public"));
 // ****fetch all notes****
 App.get("/api/notes", async (req, res) => {
   try {
@@ -67,6 +70,9 @@ App.put("/api/notes/:id", async (req, res) => {
   }
 });
 
-App.use(express.json());
+App.get("*name", (req, res) => {
+    res.sendFile(path.join(__dirname,"..","./public/index.html"));
+});
+
 
 module.exports = App;

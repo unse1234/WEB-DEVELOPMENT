@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+      display: flex;
+}
+:root{
+    --x: 500px;
+    --y: 200px;
+}
+
+.box{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+background: radial-gradient(200px at var(--x) var(--y),rgba(255, 255, 255, 0), #000000c0 200px);
+}
+video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

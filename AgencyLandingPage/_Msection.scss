@@ -1,0 +1,106 @@
+section{
+    width: 100%;
+    height: 100%;
+    background-color:#fff;
+    display: grid;
+    grid-template-columns: 15% 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "sidebar  top"
+                         "sidebar  bottom";
+
+    .sidebar {
+   
+        grid-area: sidebar;
+  padding: 50PX 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 40px;
+
+    a {             
+        font-weight:700;
+        font-size: 24px;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: #000;
+
+      text-decoration: none;
+
+    }
+  }
+
+  &__socials {
+    display: flex;
+    font-size: 14px;
+    svg{
+        margin-right: 20px;
+        width: 20px;
+        height: 20px;
+  }
+}
+    .top{
+           grid-area: top;
+           .hero {
+  display: flex;
+  align-items: center;
+  padding: 100px 10%;
+  min-height: 60vh;
+
+  &__container {
+    max-width: 900px;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2.5rem;
+    
+    .title-serif {
+      font-family: 'Instrument Serif', serif; 
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      line-height: 1;
+      color: #000;
+    }
+
+    .title-script {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(4rem, 12vw, 9rem);
+      margin-left: 20%; 
+      margin-top: -1.5rem; // Creates that editorial overlap
+      font-weight: 400;
+      color: #000;
+    }
+  }
+
+  &__copy {
+    max-width: 440px;
+    margin-left: 25%; // Aligns the paragraph under the script text
+    
+    p {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #555;
+
+      strong {
+        color: #000;
+        font-weight: 700;
+      }
+    }
+  }
+}           
+    }
+    .bottom{
+           grid-area: bottom;
+        
+    }
+}}
