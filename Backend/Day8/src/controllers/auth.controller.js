@@ -96,4 +96,4 @@ async function loginUser (req, res) {
 }
 
 
-module.exports={registerUser,loginUser};
+module.exports={registerUser,loginUser}; 
